@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Weather.scss'
+import { FaSearch, FaWind } from "react-icons/fa";
+import { MdOutlineWaves } from "react-icons/md";
+
 
 const Weather = () => {
 
@@ -26,39 +29,36 @@ const Weather = () => {
     const handleSub = (e) => {
         e.preventDefault()
         search(value)
-        console.log(value);
+        setValue('')
     }
+    const date = new Date();
+
+    const dateOnly = date.toLocaleDateString()
 
     return (
         <div className="weather-container">
             <div className="weather-card">
                 <form onSubmit={handleSub}>
-                    <input onChange={(e) => setValue(e.target.value)} className='search' type="text" placeholder='Serach city name' name="" id="" />
-                    <button type='submit'>Search</button>
+                    <input onChange={(e) => setValue(e.target.value)} value={value} className='search' type="text" placeholder='Serach city name' name="" id="" />
+                    <button className='subBtn' type='submit'><FaSearch />                    </button>
                 </form>
                 {weather && (<div>
-                    <div className="icon">
-                        <svg className="svg-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
-                        </svg>
-                    </div>
                     <div className="temperature">{Math.ceil(weather.temparature)}°<span>C</span></div>
                     <div className='maincity'>
                         <div className="city">{weather.place}</div>
-                        <div className="date">Thursday 10</div>
+                        <div className="date">{dateOnly}</div>
                     </div>
                     <div className="details">
                         <div className="detail">
-                            <div className="label">Wind</div>
-                            <div className="value">{weather.windSpeed}</div>
+                            <div className="label"><FaWind />
+                                Wind</div>
+                            <div className="value">{weather.windSpeed} km/h</div>
                         </div>
                         <div className="detail">
-                            <div className="label">Humidity</div>
-                            <div className="value">{weather.humidity}</div>
-                        </div>
-                        <div className="detail">
-                            <div className="label">Visibility</div>
-                            <div className="value">{weather.visibility}</div>
+                            <div className="label"><MdOutlineWaves />
+
+                                Humidity</div>
+                            <div className="value">{weather.humidity}%</div>
                         </div>
                     </div>
                 </div>)}

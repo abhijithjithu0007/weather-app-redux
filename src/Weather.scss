@@ -11,53 +11,64 @@ body {
   .weather-card {
     display: flex;
     flex-direction: column;
-    background-color: #e2e8f0;
+    background-color: #b3b3fc;
     border-radius: 0.5rem;
     padding: 1rem;
     width: 100%;
     max-width: 20rem;
 
-    
+    form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .subBtn {
+      border: none;
+      background: #4a5568;
+      color: #fff;
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      cursor: pointer;
+
+
+      &:hover {
+        background: white; 
+        color: #4a5568; 
+        transform: scale(1.05);
+        transition: .5s ease;
+      }
+    }
 
     .search {
-      height: 33px;
+      height: 40px;
       border-radius: 20px;
       padding-left: 15px;
-      font-size: medium;
-      border: none;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s;
+
+      &:focus {
+        border-color: #6366f1;
+        outline: none;
+      }
     }
 
     .maincity {
       text-align: center;
-      font-size: larger;
+      font-size: 1.25rem;
       padding: 10px;
 
       .city {
-        font-size: larger;
+        font-size: 1.5rem;
+        font-weight: bold;
       }
 
       .date {
         padding-top: 10px;
-        font-size: medium;
+        font-size: 1rem;
       }
-    }
-
-    .date {
-      font-size: 0.875rem;
-      color: #6b7280;
-    }
-
-    .icon {
-      margin-top: 1.5rem;
-      font-size: 6rem;
-      align-self: center;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.5rem;
-      color: #6366f1;
-      height: 6rem;
-      width: 6rem;
     }
 
     .temperature {
@@ -66,11 +77,12 @@ body {
       align-items: center;
       justify-content: center;
       margin-top: 1.5rem;
-      font-weight: medium;
+      font-weight: bold;
       font-size: 4.5rem;
 
-      span{
-        font-size: 3.5rem;
+      span {
+        font-size: 3rem;
+        margin-left: 5px;
       }
     }
 
@@ -80,20 +92,23 @@ body {
       justify-content: space-between;
       margin-top: 1.5rem;
 
-
       .detail {
         display: flex;
         flex-direction: column;
         align-items: center;
 
         .label {
-          font-weight: medium;
-          font-size: 0.875rem;
+          font-weight: bold;
+          font-size: 1rem;
+          padding: 5px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
         }
 
         .value {
-          font-size: 0.875rem;
-          color: #6b7280
+          font-size: 1rem;
+          color: #4a5568;
         }
       }
     }
