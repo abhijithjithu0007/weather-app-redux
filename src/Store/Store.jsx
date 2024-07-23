@@ -1,11 +1,11 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import Myslice from '../WeatherSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import Myslice from '../WeatherSlice'
 
-// const store = configureStore({
-//     reducer:{
-//         weather: Myslice
-//     }
-// })
+const store = configureStore({
+    reducer:{
+        weather: Myslice
+    }
+})
 
-// export default store
+export default store
 
