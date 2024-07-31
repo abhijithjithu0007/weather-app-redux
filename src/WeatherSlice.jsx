@@ -6,12 +6,13 @@ export const fetchData = createAsyncThunk('fetchData',
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
             const resp = await fetch(url);
             const data = await resp.json();
+            console.log(data);
             return {
                 humidity: data.main.humidity,
                 windSpeed: data.wind.speed,
                 visibility: data.visibility,
                 temperature: data.main.temp,
-                place: data.name
+                place: data.name,
             };
         } catch (error) {
             console.log(error);

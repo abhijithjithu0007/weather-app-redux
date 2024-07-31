@@ -4,12 +4,14 @@ import { fetchData } from './WeatherSlice';
 import './Weather.scss';
 import { FaSearch, FaWind } from 'react-icons/fa';
 import { MdOutlineWaves } from 'react-icons/md';
+import { TiWeatherCloudy,TiWeatherDownpour,TiWeatherPartlySunny,TiWeatherShower ,TiWeatherSnow ,TiWeatherStormy ,TiWeatherSunny,TiWeatherWindy ,TiWeatherWindyCloudy  } from "react-icons/ti";
+
 
 const Weather = () => {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const weather = useSelector((state) => state.weather.weather);
-
+  console.log(weather);
   const handleSub = (e) => {
     e.preventDefault();
     if (value) {
