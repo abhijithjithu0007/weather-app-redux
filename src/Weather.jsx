@@ -4,7 +4,11 @@ import { fetchData } from './WeatherSlice';
 import './Weather.scss';
 import { FaSearch, FaWind } from 'react-icons/fa';
 import { MdOutlineWaves } from 'react-icons/md';
-import { TiWeatherCloudy,TiWeatherDownpour,TiWeatherPartlySunny,TiWeatherShower ,TiWeatherSnow ,TiWeatherStormy ,TiWeatherSunny,TiWeatherWindy ,TiWeatherWindyCloudy  } from "react-icons/ti";
+import { TiWeatherCloudy, TiWeatherDownpour, TiWeatherShower, TiWeatherPartlySunny, TiWeatherSnow, TiWeatherStormy, TiWeatherSunny, TiWeatherWindy, TiWeatherWindyCloudy } from "react-icons/ti";
+import { BsClouds } from "react-icons/bs";
+import { IoThunderstorm } from "react-icons/io5";
+import { FaRegSnowflake } from "react-icons/fa";
+import { RiMistFill } from "react-icons/ri";
 
 
 const Weather = () => {
@@ -19,6 +23,30 @@ const Weather = () => {
       setValue('');
     }
   };
+
+  const weatherIcons = (icon) => {
+    switch (icon) {
+      case '01d': return <TiWeatherSunny />;
+      case '01n': return <TiWeatherSunny />;
+      case '02d': return <TiWeatherPartlySunny />;
+      case '02n': return <TiWeatherPartlySunny />;
+      case '03d': return <TiWeatherCloudy />;
+      case '04d': return <BsClouds />
+      case '04n': return <TiWeatherWindyCloudy />;
+      case '09d': return <TiWeatherShower />
+      case '09n': return <TiWeatherShower />;
+      case '10d': return <TiWeatherDownpour />;
+      case '10n': return <TiWeatherDownpour />;
+      case '11d': return <IoThunderstorm />
+      case '11n': return <TiWeatherStormy />;
+      case '13d': return <FaRegSnowflake />
+      case '13n': return <TiWeatherSnow />;
+      case '50d': return <RiMistFill />
+      case '50n': return <TiWeatherWindy />;
+      default: return <TiWeatherCloudy />;
+    }
+  };
+
 
   const date = new Date();
   const dateOnly = date.toLocaleDateString();
@@ -38,8 +66,11 @@ const Weather = () => {
             <FaSearch />
           </button>
         </form>
-        {weather &&(
+        {weather && (
           <div>
+            <div className='icon'>
+              {weatherIcons(weather.icon)}
+            </div>
             <div className="temperature">
               {Math.ceil(weather.temperature)}°<span>C</span>
             </div>
@@ -55,6 +86,7 @@ const Weather = () => {
                 </div>
                 <div className="value">{weather.windSpeed} km/h</div>
               </div>
+
               <div className="detail">
                 <div className="label">
                   <MdOutlineWaves />
